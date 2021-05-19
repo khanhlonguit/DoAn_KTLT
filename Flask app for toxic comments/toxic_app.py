@@ -6,7 +6,6 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load the TF-IDF vocabulary specific to the category
 with open(r"toxic_vect.pkl", "rb") as f:
     tox = pickle.load(f)
 
@@ -25,7 +24,7 @@ with open(r"threat_vect.pkl", "rb") as f:
 with open(r"identity_hate_vect.pkl", "rb") as f:
     ide = pickle.load(f)
 
-# Load the pickled RDF models
+# Load models
 with open(r"toxic_model.pkl", "rb") as f:
     tox_model = pickle.load(f)
 
@@ -92,6 +91,5 @@ def predict():
                             pred_ide = 'Prob (Identity Hate): {}'.format(out_ide)                        
                             )
      
-# Server reloads itself if code changes so no need to keep restarting:
 app.run(debug=True)
 
